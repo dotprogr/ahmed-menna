@@ -456,6 +456,37 @@
         color: var(--chocolate);
       }
 
+      .venue__map {
+        margin-top: 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        font-style: italic;
+        font-size: clamp(12.5px, 3.6vw, 14.5px);
+        line-height: 1.5;
+        color: var(--label);
+        text-decoration: none;
+        border-bottom: 1px solid var(--gold-ghost);
+        padding-bottom: 2px;
+        transition: color 0.18s ease, border-color 0.18s ease;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .venue__map:hover {
+        color: var(--burgundy);
+        border-color: var(--gold-faint);
+      }
+      .venue__map:focus-visible {
+        outline: 2px solid var(--gold);
+        outline-offset: 3px;
+        border-radius: 3px;
+      }
+      .venue__pin {
+        width: 12px;
+        height: 12px;
+        flex: 0 0 auto;
+        color: var(--gold);
+      }
+
       /* --------------------------------------------------------- dress code */
       .dresscode {
         margin-top: clamp(24px, 5.2vw, 34px);
@@ -759,6 +790,20 @@
         <p class="venue__key">THE VENUE</p>
         <p class="venue__name">Diva Talkha Hall</p>
         <p class="venue__city">Talkha, Dakahlia</p>
+        <a
+          class="venue__map"
+          href="https://maps.google.com/?q=Diva%20Talkha%20Hall%2C%20Talkha%2C%20Dakahlia%2C%20Egypt"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg class="venue__pin" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M12 2.5c-3.9 0-7 3.1-7 7 0 5.2 7 12 7 12s7-6.8 7-12c0-3.9-3.1-7-7-7zm0 9.6a2.6 2.6 0 1 1 0-5.2 2.6 2.6 0 0 1 0 5.2z"
+              fill="currentColor"
+            />
+          </svg>
+          We can&rsquo;t wait to celebrate with you &mdash; view the venue on the map
+        </a>
       </section>
 
       <!-- ------------------------------------------------------- dress code -->
@@ -904,21 +949,39 @@
           return lines.join("\r\n");
         }
 
+        /* iOS Safari ignores the download attribute on blob URLs and then
+           offers to save the rendered page as a PDF instead of the event;
+           a data: URI with a calendar mime type opens the system
+           "Add to Calendar" sheet directly. Everywhere else the .ics is
+           downloaded as a normal attachment. */
+        function isIOS() {
+          const ua = navigator.userAgent || "";
+          const iOS = /iPad|iPhone|iPod/.test(ua);
+          const iPadOS =
+            navigator.platform === "MacIntel" && (navigator.maxTouchPoints || 0) > 1;
+          return iOS || iPadOS;
+        }
+
+        function saveCalendar() {
+          const ics = buildIcs();
+          if (isIOS()) {
+            window.location.href =
+              "data:text/calendar;charset=utf-8," + encodeURIComponent(ics);
+            return;
+          }
+          const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "ahmed-and-menna-wedding.ics";
+          document.body.appendChild(a);
+          a.click();
+          a.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 1500);
+        }
+
         const btn = document.getElementById("add-calendar");
-        btn &&
-          btn.addEventListener("click", () => {
-            const blob = new Blob([buildIcs()], {
-              type: "text/calendar;charset=utf-8",
-            });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "ahmed-and-menna-wedding.ics";
-            document.body.appendChild(a);
-            a.click();
-            a.remove();
-            setTimeout(() => URL.revokeObjectURL(url), 1500);
-          });
+        btn && btn.addEventListener("click", saveCalendar);
       })();
     </script>
   </body>

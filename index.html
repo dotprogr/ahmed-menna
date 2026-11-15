@@ -632,21 +632,22 @@
         z-index: 1;
         margin: 0;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
-        gap: clamp(6px, 1.6vw, 9px);
+        justify-content: center;
+        gap: clamp(8px, 2.2vw, 11px);
       }
       .built-by__label {
         font-family: "Cinzel", serif;
         font-size: clamp(8px, 2.3vw, 9.5px);
         letter-spacing: 0.32em;
-        text-indent: 0.32em;
+        margin-inline-end: -0.32em;
         text-transform: uppercase;
         color: rgba(138, 106, 63, 0.7);
       }
       .built-by__logo {
         display: block;
-        width: clamp(92px, 28vw, 126px);
+        width: clamp(76px, 22vw, 100px);
         height: auto;
       }
 

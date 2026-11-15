@@ -462,28 +462,38 @@
       }
 
       .venue__map {
-        margin-top: 12px;
+        margin-top: 14px;
         display: inline-flex;
         align-items: center;
         gap: 7px;
         font-style: italic;
         font-size: clamp(14.5px, 4.3vw, 17px);
         line-height: 1.5;
-        color: var(--label);
+        color: var(--burgundy);
         text-decoration: none;
-        border-bottom: 1px solid var(--gold-ghost);
-        padding-bottom: 2px;
+        border-bottom: 1px solid var(--gold);
+        padding-bottom: 3px;
         transition: color 0.18s ease, border-color 0.18s ease;
         -webkit-tap-highlight-color: transparent;
       }
       .venue__map:hover {
-        color: var(--burgundy);
-        border-color: var(--gold-faint);
+        color: var(--burgundy-deep);
+        border-color: var(--burgundy);
       }
       .venue__map:focus-visible {
         outline: 2px solid var(--gold);
         outline-offset: 3px;
         border-radius: 3px;
+      }
+      .venue__arrow {
+        width: 11px;
+        height: 11px;
+        flex: 0 0 auto;
+        color: var(--gold);
+        transition: transform 0.18s ease;
+      }
+      .venue__map:hover .venue__arrow {
+        transform: translate(1px, -1px);
       }
       .venue__pin {
         width: 13px;
@@ -622,7 +632,9 @@
         }
       }
       @media (prefers-reduced-motion: reduce) {
-        .btn {
+        .btn,
+        .venue__map,
+        .venue__arrow {
           transition: none;
         }
       }
@@ -809,6 +821,16 @@
             />
           </svg>
           We can&rsquo;t wait to celebrate with you &mdash; view the venue on the map
+          <svg class="venue__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path
+              d="M7 17L17 7M9 7h8v8"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
         </a>
       </section>
 

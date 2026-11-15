@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ahmed &amp; Menna Allah — 27 March 2027</title>
+    <meta
+      name="description"
+      content="Join us to celebrate the wedding of Ahmed & Menna Allah on Saturday, 27 March 2027."
+    />
+    <meta name="theme-color" content="#fbf4e8" />
+    <meta property="og:title" content="Ahmed & Menna Allah — Wedding Invitation" />
+    <meta
+      property="og:description"
+      content="Saturday, 27 March 2027 — we would love to celebrate with you."
+    />
+    <meta property="og:image" content="img/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:type" content="website" />
+    <link rel="preload" href="fonts/alex-brush-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="fonts/cinzel-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="wash" aria-hidden="true"></div>
+
+    <main class="card">
+      <div class="corner corner--tl" aria-hidden="true"></div>
+      <div class="corner corner--tr" aria-hidden="true"></div>
+      <div class="corner corner--bl" aria-hidden="true"></div>
+      <div class="corner corner--br" aria-hidden="true"></div>
+
+      <!-- ------------------------------------------------------- hero -->
+      <header class="hero">
+        <p class="overline">Together with their families</p>
+
+        <h1 class="names">
+          <span class="name">Ahmed</span>
+          <span class="amp">&amp;</span>
+          <span class="name">Menna Allah</span>
+        </h1>
+
+        <p class="invite">
+          request the pleasure of your company<br />
+          at the celebration of our wedding
+        </p>
+
+        <div class="ornament" aria-hidden="true">
+          <span class="ornament__line"></span>
+          <span class="ornament__leaf"></span>
+          <span class="ornament__line"></span>
+        </div>
+      </header>
+
+      <!-- ---------------------------------------------------- countdown -->
+      <section class="countdown" aria-labelledby="countdown-title">
+        <h2 id="countdown-title" class="countdown__label">Counting down to our day</h2>
+
+        <div class="clock" id="clock" data-target="2027-03-27T19:00:00+02:00">
+          <div class="unit">
+            <span class="unit__value" id="days">—</span>
+            <span class="unit__label">Days</span>
+          </div>
+          <span class="unit__sep" aria-hidden="true">·</span>
+          <div class="unit">
+            <span class="unit__value" id="hours">—</span>
+            <span class="unit__label">Hours</span>
+          </div>
+          <span class="unit__sep" aria-hidden="true">·</span>
+          <div class="unit">
+            <span class="unit__value" id="minutes">—</span>
+            <span class="unit__label">Minutes</span>
+          </div>
+          <span class="unit__sep" aria-hidden="true">·</span>
+          <div class="unit">
+            <span class="unit__value" id="seconds">—</span>
+            <span class="unit__label">Seconds</span>
+          </div>
+        </div>
+
+        <p class="clock__fallback">
+          Saturday, 27 March 2027<span class="dot">·</span>7:00 PM
+        </p>
+      </section>
+
+      <!-- ----------------------------------------------------- portrait -->
+      <figure class="portrait">
+        <div class="portrait__arch">
+          <img
+            src="img/portrait.jpg"
+            width="900"
+            height="1125"
+            alt="Illustration of Ahmed and Menna Allah holding their two cats among flowers"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <figcaption class="visually-hidden">
+          Ahmed and Menna Allah with their cats
+        </figcaption>
+      </figure>
+
+      <!-- ------------------------------------------------------ details -->
+      <section class="venue" aria-label="Venue">
+        <span class="venue__key">The venue</span>
+        <span class="venue__name">Diva Talkha Hall</span>
+        <span class="venue__city">Talkha, Dakahlia</span>
+        <a
+          class="venue__map"
+          href="https://maps.google.com/?q=Diva%20Talkha%20Hall%2C%20Talkha%2C%20Dakahlia%2C%20Egypt"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Open in maps</a
+        >
+      </section>
+
+      <section class="details" aria-label="Wedding details">
+        <div class="detail">
+          <span class="detail__key">The day</span>
+          <span class="detail__value">Saturday</span>
+        </div>
+        <div class="detail detail--rule">
+          <span class="detail__key">The date</span>
+          <span class="detail__value detail__value--big">27<span class="slash">/</span>03<span class="slash">/</span>2027</span>
+        </div>
+        <div class="detail">
+          <span class="detail__key">The hour</span>
+          <span class="detail__value">7:00 PM</span>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button class="btn btn--solid" id="add-calendar" type="button">
+          Add to calendar
+        </button>
+      </div>
+
+      <!-- ------------------------------------------------------- footer -->
+      <footer class="footer">
+        <div class="ornament ornament--small" aria-hidden="true">
+          <span class="ornament__line"></span>
+          <span class="ornament__leaf"></span>
+          <span class="ornament__line"></span>
+        </div>
+        <p class="closing">Here begins a lifetime of love, laughter and light</p>
+      </footer>
+    </main>
+
+    <p class="credit">With love, Ahmed &amp; Menna Allah</p>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>

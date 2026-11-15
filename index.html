@@ -3,17 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ahmed &amp; Menna Allah — 27 · 03 · 2027</title>
+    <title>Ahmed &amp; Menna Allah — 27 March 2027</title>
     <meta
       name="description"
       content="Together with their families, Ahmed &amp; Menna Allah request the pleasure of your company at the celebration of our wedding — Saturday, 27 March 2027, Diva Talkha Hall, Talkha, Dakahlia."
     />
     <meta name="robots" content="noindex" />
-    <meta name="theme-color" content="#2b0710" />
+    <meta name="theme-color" content="#f5eddc" />
     <link rel="canonical" href="https://dotprogr.github.io/ahmed-menna/" />
     <meta property="og:url" content="https://dotprogr.github.io/ahmed-menna/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Ahmed &amp; Menna Allah — 27 · 03 · 2027" />
+    <meta property="og:title" content="Ahmed &amp; Menna Allah — 27 March 2027" />
     <meta
       property="og:description"
       content="Saturday, 27 March 2027 · Diva Talkha Hall, Talkha, Dakahlia — we would love to celebrate with you."
@@ -22,7 +22,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <link
       rel="icon"
-      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233a0a18'/%3E%3Ccircle cx='32' cy='39' r='13' fill='none' stroke='%23cfa55c' stroke-width='3.4'/%3E%3Cpath d='M32 13.5l4.6 6.9h-9.2z' fill='%23f3dda8'/%3E%3C/svg%3E"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23faf3e4'/%3E%3Ccircle cx='32' cy='39' r='13' fill='none' stroke='%238e2433' stroke-width='3.4'/%3E%3Cpath d='M32 13.5l4.6 6.9h-9.2z' fill='%23b8934a'/%3E%3C/svg%3E"
     />
     <style>
       /* ----------------------------------------------------------- fonts
@@ -63,16 +63,18 @@
 
       /* ----------------------------------------------------------- tokens */
       :root {
-        --wine-900: #21040c;
-        --wine-800: #2b0710;
-        --wine-700: #3a0a18;
-        --gold: #cfa55c;
-        --gold-hi: #f3dda8;
-        --gold-deep: #9c7434;
-        --ivory: #f8efdf;
-        --ivory-dim: rgba(248, 239, 223, 0.76);
-        --gold-faint: rgba(207, 165, 92, 0.38);
-        --gold-ghost: rgba(207, 165, 92, 0.14);
+        --cream: #f5eddc;
+        --cream-lift: #fdf9ee;
+        --beige: #e4cfa2;
+        --burgundy: #8e2433;
+        --burgundy-deep: #6f1a26;
+        --chocolate: #5c3a3e;
+        --gold: #b8934a;
+        --gold-hi: #d9bc7f;
+        --green: #6d7a4e;
+        --label: #8a6a3f;
+        --gold-faint: rgba(184, 147, 74, 0.5);
+        --gold-ghost: rgba(184, 147, 74, 0.22);
       }
 
       *,
@@ -89,37 +91,35 @@
         margin: 0;
         min-height: 100vh;
         min-height: 100dvh;
-        padding: clamp(12px, 3.4vw, 40px) clamp(10px, 3vw, 32px) clamp(26px, 5vw, 56px);
+        padding: clamp(14px, 3.6vw, 44px) clamp(10px, 3vw, 32px) clamp(28px, 5vw, 56px);
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: clamp(12px, 2.4vw, 20px);
-        color: var(--ivory);
+        color: var(--chocolate);
         font-family: "Playfair Display", Georgia, serif;
-        background-color: var(--wine-800);
+        background-color: var(--cream);
+        background-image:
+          radial-gradient(120% 80% at 50% -8%, #fbf6ea 0%, transparent 58%),
+          radial-gradient(110% 75% at 50% 108%, #f0e4cc 0%, transparent 60%);
         -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
       }
 
-      /* deep-wine backdrop with a gold glow, plus a faint speckled-gold
-         texture. Fixed positioning (not background-attachment) so iOS
-         Safari keeps it stable while scrolling. */
+      /* faint gold speckle, like textured cotton paper */
       body::before {
         content: "";
         position: fixed;
         inset: 0;
         z-index: 0;
         pointer-events: none;
-        background-image:
-          radial-gradient(130% 85% at 50% -12%, rgba(207, 165, 92, 0.17), transparent 55%),
-          radial-gradient(120% 75% at 50% 112%, rgba(122, 18, 42, 0.55), transparent 62%),
-          radial-gradient(rgba(207, 165, 92, 0.09) 1px, transparent 1.3px),
-          linear-gradient(180deg, var(--wine-700) 0%, var(--wine-800) 52%, var(--wine-900) 100%);
-        background-size:
-          auto,
-          auto,
-          26px 26px,
-          auto;
+        background-image: radial-gradient(rgba(184, 147, 74, 0.12) 1px, transparent 1.2px);
+        background-size: 24px 24px;
+      }
+
+      ::selection {
+        background: var(--burgundy);
+        color: var(--cream-lift);
       }
 
       /* ------------------------------------------------------------- frame */
@@ -127,69 +127,121 @@
         position: relative;
         z-index: 1;
         width: min(600px, 100%);
-        padding: clamp(34px, 8.5vw, 62px) clamp(20px, 6vw, 56px) clamp(30px, 6.5vw, 50px);
+        padding: clamp(40px, 9vw, 66px) clamp(22px, 6.5vw, 58px) clamp(32px, 6.5vw, 52px);
         text-align: center;
         border: 1px solid var(--gold-faint);
-        border-radius: 8px;
-        background:
-          linear-gradient(180deg, rgba(255, 244, 224, 0.045), rgba(255, 244, 224, 0.012) 40%, rgba(0, 0, 0, 0.06));
+        border-radius: 6px;
+        background: linear-gradient(180deg, #fefaf1 0%, var(--cream-lift) 46%, #faf3e3 100%);
         box-shadow:
-          inset 0 0 0 5px rgba(33, 4, 12, 0.28),
-          inset 0 0 0 6px var(--gold-ghost),
-          0 26px 60px rgba(0, 0, 0, 0.45);
+          inset 0 0 0 4px var(--cream-lift),
+          inset 0 0 0 5px var(--gold-ghost),
+          0 24px 60px rgba(92, 58, 62, 0.14);
       }
 
-      .corner {
+      /* gilded corner scrolls */
+      .corner-arc {
         position: absolute;
-        width: 9px;
-        height: 9px;
-        background: linear-gradient(150deg, var(--gold-hi), var(--gold-deep));
+        width: clamp(42px, 12vw, 60px);
+        height: auto;
+        color: var(--gold);
+        pointer-events: none;
+      }
+      .corner-arc--tl { top: 11px; left: 11px; }
+      .corner-arc--tr { top: 11px; right: 11px; transform: scaleX(-1); }
+      .corner-arc--bl { bottom: 11px; left: 11px; transform: scaleY(-1); }
+      .corner-arc--br { bottom: 11px; right: 11px; transform: scale(-1); }
+
+      /* ---------------------------------------------------------- ornaments */
+      .sprig,
+      .rosette {
+        display: block;
+        color: var(--gold);
+      }
+      .sprig {
+        width: clamp(58px, 17.5vw, 88px);
+        height: auto;
+        flex: 0 0 auto;
+      }
+      .sprig--flip {
+        transform: scaleX(-1);
+      }
+      .rosette {
+        width: clamp(18px, 5vw, 24px);
+        height: auto;
+        flex: 0 0 auto;
+      }
+
+      .ornament {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(8px, 2.4vw, 14px);
+        margin: 0 auto;
+        width: min(320px, 84%);
+      }
+      .ornament--top {
+        margin-bottom: clamp(14px, 3vw, 20px);
+      }
+      .ornament--bottom {
+        margin-top: clamp(14px, 3vw, 20px);
+      }
+      .ornament__line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--gold-faint), transparent);
+      }
+
+      .divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin: clamp(18px, 4vw, 26px) auto 0;
+        width: min(240px, 70%);
+      }
+      .divider__line {
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, var(--gold-faint), transparent);
+      }
+      .divider__gem {
+        width: 8px;
+        height: 8px;
+        background: linear-gradient(150deg, var(--gold-hi), var(--gold));
         transform: rotate(45deg);
         border-radius: 1px;
       }
-      .corner--tl { top: -5px; left: -5px; }
-      .corner--tr { top: -5px; right: -5px; }
-      .corner--bl { bottom: -5px; left: -5px; }
-      .corner--br { bottom: -5px; right: -5px; }
 
       /* -------------------------------------------------------------- hero */
       .overline {
-        margin: 0 0 clamp(12px, 2.6vw, 18px);
+        margin: 0;
         font-family: "Cinzel", serif;
         font-weight: 400;
         font-size: clamp(9px, 2.7vw, 11px);
-        letter-spacing: 0.36em;
-        text-indent: 0.36em;
+        letter-spacing: 0.38em;
+        text-indent: 0.38em;
         text-transform: uppercase;
-        color: var(--gold);
+        color: var(--label);
       }
 
       .names {
-        margin: 0;
+        margin: clamp(14px, 3vw, 20px) 0 0;
         display: flex;
         flex-direction: column;
         align-items: center;
-        line-height: 1.04;
-        filter: drop-shadow(0 8px 22px rgba(0, 0, 0, 0.4));
+        line-height: 1.05;
       }
 
       .name {
         font-family: "Alex Brush", "Brush Script MT", cursive;
         font-weight: 400;
-        font-size: clamp(56px, 16.5vw, 94px);
-        line-height: 1.06;
-        padding: 0 0.06em 0.04em;
+        font-size: clamp(54px, 16.5vw, 96px);
+        line-height: 1.08;
+        color: var(--burgundy);
+        padding: 0 0.06em 0.05em;
       }
-
-      /* gold-foil lettering, with a safe solid fallback */
-      @supports ((-webkit-background-clip: text) or (background-clip: text)) {
-        .name {
-          background: linear-gradient(177deg, #fdf3d4 0%, #eed39a 30%, var(--gold) 58%, #a87c33 88%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          color: transparent;
-          -webkit-text-fill-color: transparent;
-        }
+      .name--second {
+        font-size: clamp(46px, 14vw, 82px);
       }
 
       .amp {
@@ -197,78 +249,51 @@
         align-items: center;
         justify-content: center;
         gap: clamp(12px, 3.4vw, 22px);
-        margin: 0.1em 0 0.06em;
+        margin: 0.08em 0 0.04em;
         font-family: "Alex Brush", "Brush Script MT", cursive;
-        font-size: clamp(28px, 8.6vw, 44px);
+        font-size: clamp(26px, 7.6vw, 40px);
         line-height: 1;
         color: var(--gold);
       }
       .amp__rule {
-        width: clamp(34px, 11vw, 74px);
+        width: clamp(34px, 11vw, 76px);
         height: 1px;
         background: linear-gradient(90deg, transparent, var(--gold-faint), transparent);
       }
 
       .invite {
-        margin: clamp(15px, 3.2vw, 22px) 0 0;
+        margin: clamp(14px, 3vw, 20px) auto 0;
         font-style: italic;
         font-size: clamp(15px, 4.2vw, 18.5px);
         line-height: 1.66;
-        color: var(--ivory-dim);
+        color: var(--chocolate);
         max-width: 32ch;
-        margin-inline: auto;
-      }
-
-      /* ---------------------------------------------------------- ornament */
-      .ornament {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        margin: clamp(20px, 4.4vw, 30px) auto 0;
-        width: min(320px, 82%);
-      }
-      .ornament--small {
-        width: min(200px, 62%);
-        margin-top: clamp(14px, 3vw, 20px);
-      }
-      .ornament__line {
-        flex: 1;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
-      }
-      .ornament__gem {
-        width: 10px;
-        height: 10px;
-        background: linear-gradient(150deg, var(--gold-hi), var(--gold-deep));
-        transform: rotate(45deg);
-        border-radius: 1px;
       }
 
       /* ---------------------------------------------------------- portrait */
       .portrait {
-        margin: clamp(26px, 5.6vw, 38px) 0 0;
+        margin: clamp(24px, 5.4vw, 34px) 0 0;
         display: flex;
         justify-content: center;
+        position: relative;
       }
 
       .portrait__arch {
         position: relative;
-        width: min(380px, 90%);
-        padding: 6px;
-        border-radius: 210px 210px 14px 14px;
-        background: linear-gradient(168deg, var(--gold-hi) 0%, var(--gold) 42%, #8e6a2c 100%);
+        width: min(360px, 86%);
+        padding: 7px;
+        border-radius: 50%;
+        background: linear-gradient(168deg, var(--gold-hi) 0%, var(--gold) 46%, #96702f 100%);
         box-shadow:
-          0 20px 44px rgba(0, 0, 0, 0.45),
-          0 0 0 1px rgba(207, 165, 92, 0.22),
-          0 0 46px rgba(207, 165, 92, 0.14);
+          0 18px 40px rgba(92, 58, 62, 0.2),
+          0 0 0 1px rgba(184, 147, 74, 0.35);
       }
       .portrait__arch::after {
         content: "";
         position: absolute;
-        inset: 6px;
-        border-radius: inherit;
-        box-shadow: inset 0 0 0 1px rgba(255, 248, 232, 0.55);
+        inset: 7px;
+        border-radius: 50%;
+        box-shadow: inset 0 0 0 1px rgba(255, 250, 236, 0.7);
         pointer-events: none;
       }
 
@@ -276,55 +301,70 @@
         display: block;
         width: 100%;
         height: auto;
-        border-radius: 204px 204px 9px 9px;
+        border-radius: 50%;
+      }
+
+      /* small gilded sprigs hugging the bottom of the oval */
+      .portrait__laurel {
+        position: absolute;
+        bottom: -3px;
+        width: clamp(62px, 19vw, 92px);
+        height: auto;
+        color: var(--gold);
+        pointer-events: none;
+      }
+      .portrait__laurel--l {
+        left: 2%;
+        transform: scaleX(-1) rotate(22deg);
+      }
+      .portrait__laurel--r {
+        right: 2%;
+        transform: rotate(22deg);
       }
 
       /* -------------------------------------------------------------- date */
       .date {
-        margin-top: clamp(26px, 5.6vw, 38px);
-        padding-block: clamp(16px, 3.6vw, 24px);
-        border-block: 1px solid var(--gold-ghost);
+        margin-top: clamp(28px, 6vw, 40px);
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 7px;
+        gap: 8px;
       }
       .date__day {
         margin: 0;
         font-family: "Cinzel", serif;
         font-size: clamp(10px, 2.9vw, 12px);
-        letter-spacing: 0.42em;
-        text-indent: 0.42em;
+        letter-spacing: 0.44em;
+        text-indent: 0.44em;
         text-transform: uppercase;
-        color: var(--gold);
+        color: var(--label);
       }
       .date__num {
         margin: 0;
         font-family: "Cinzel", serif;
         font-weight: 600;
-        font-size: clamp(25px, 7.2vw, 36px);
+        font-size: clamp(24px, 7.2vw, 38px);
         letter-spacing: 0.05em;
-        color: var(--gold-hi);
-        text-shadow: 0 2px 14px rgba(207, 165, 92, 0.28);
+        color: var(--burgundy);
       }
       .date__num .dot {
         color: var(--gold);
         font-weight: 400;
-        margin: 0 0.14em;
+        margin: 0 0.16em;
       }
       .date__time {
         margin: 0;
         font-family: "Cinzel", serif;
         font-size: clamp(9.5px, 2.7vw, 11px);
-        letter-spacing: 0.3em;
-        text-indent: 0.3em;
+        letter-spacing: 0.32em;
+        text-indent: 0.32em;
         text-transform: uppercase;
-        color: var(--ivory-dim);
+        color: var(--chocolate);
       }
 
       /* --------------------------------------------------------- countdown */
       .countdown {
-        margin-top: clamp(24px, 5vw, 34px);
+        margin-top: clamp(22px, 4.6vw, 30px);
       }
       .clock {
         display: flex;
@@ -334,8 +374,7 @@
         padding: clamp(14px, 3.4vw, 20px) clamp(6px, 2vw, 14px);
         border: 1px solid var(--gold-ghost);
         border-radius: 14px;
-        background: rgba(255, 244, 224, 0.035);
-        box-shadow: inset 0 1px 0 rgba(255, 244, 224, 0.06);
+        background: rgba(142, 36, 51, 0.04);
       }
       .unit {
         display: flex;
@@ -349,7 +388,7 @@
         font-weight: 600;
         font-size: clamp(22px, 6.6vw, 32px);
         line-height: 1;
-        color: var(--gold-hi);
+        color: var(--burgundy);
         font-variant-numeric: tabular-nums;
         letter-spacing: 0.02em;
       }
@@ -359,21 +398,20 @@
         letter-spacing: 0.2em;
         text-indent: 0.2em;
         text-transform: uppercase;
-        color: var(--gold);
-        opacity: 0.85;
+        color: var(--label);
       }
       .unit__sep {
         font-family: "Cinzel", serif;
         font-size: clamp(18px, 5.4vw, 26px);
         line-height: 1.15;
         color: var(--gold);
-        opacity: 0.5;
+        opacity: 0.7;
       }
       .cd-note {
         margin: 12px 0 0;
         font-style: italic;
         font-size: 14.5px;
-        color: var(--gold-hi);
+        color: var(--burgundy);
         display: none;
       }
       .clock[data-ended="true"] + .cd-note {
@@ -385,7 +423,7 @@
         font-size: clamp(9.5px, 2.7vw, 11px);
         letter-spacing: 0.22em;
         text-transform: uppercase;
-        color: var(--ivory-dim);
+        color: var(--chocolate);
       }
 
       /* ------------------------------------------------------------- venue */
@@ -402,25 +440,64 @@
         letter-spacing: 0.4em;
         text-indent: 0.4em;
         text-transform: uppercase;
-        color: var(--gold);
+        color: var(--label);
       }
       .venue__name {
         margin: 7px 0 0;
         font-style: italic;
         font-size: clamp(24px, 6.8vw, 33px);
         line-height: 1.24;
-        color: var(--ivory);
+        color: var(--burgundy);
       }
       .venue__city {
         margin: 0;
         font-style: italic;
         font-size: clamp(13.5px, 3.8vw, 15.5px);
-        color: var(--ivory-dim);
+        color: var(--chocolate);
+      }
+
+      /* --------------------------------------------------------- dress code */
+      .dresscode {
+        margin-top: clamp(24px, 5.2vw, 34px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+      }
+      .dresscode__key {
+        font-family: "Cinzel", serif;
+        font-size: clamp(9px, 2.6vw, 10.5px);
+        letter-spacing: 0.4em;
+        text-indent: 0.4em;
+        text-transform: uppercase;
+        color: var(--label);
+      }
+      .dresscode__value {
+        margin: 4px 0 0;
+        font-style: italic;
+        font-size: clamp(19px, 5.4vw, 25px);
+        line-height: 1.3;
+        color: var(--burgundy);
+      }
+      .swatches {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(9px, 2.6vw, 13px);
+        margin-top: 8px;
+      }
+      .swatch {
+        width: clamp(12px, 3.4vw, 15px);
+        height: clamp(12px, 3.4vw, 15px);
+        border-radius: 50%;
+        box-shadow:
+          inset 0 0 0 1px rgba(92, 58, 62, 0.22),
+          0 1px 2px rgba(92, 58, 62, 0.18);
       }
 
       /* ------------------------------------------------------------ action */
       .actions {
-        margin-top: clamp(26px, 5.4vw, 36px);
+        margin-top: clamp(28px, 5.6vw, 38px);
         display: flex;
         justify-content: center;
       }
@@ -429,44 +506,42 @@
         font-size: clamp(10px, 2.8vw, 11.5px);
         letter-spacing: 0.22em;
         text-indent: 0.22em;
-        padding: 14px 26px;
-        border: 0;
+        padding: 15px 28px;
+        border: 1px solid rgba(184, 147, 74, 0.65);
         border-radius: 999px;
         cursor: pointer;
-        color: var(--wine-700);
-        background: linear-gradient(180deg, #f0d69b 0%, var(--gold) 52%, #b78c42 100%);
+        color: #fdf6e9;
+        background: linear-gradient(180deg, #a03041 0%, var(--burgundy) 52%, var(--burgundy-deep) 100%);
         box-shadow:
-          0 12px 26px rgba(0, 0, 0, 0.38),
-          inset 0 1px 0 rgba(255, 255, 255, 0.45),
-          inset 0 -1px 0 rgba(90, 60, 20, 0.35);
+          0 12px 26px rgba(112, 26, 38, 0.28),
+          inset 0 1px 0 rgba(255, 255, 255, 0.16);
         transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
         -webkit-tap-highlight-color: transparent;
       }
       .btn:hover {
         transform: translateY(-1px);
-        filter: brightness(1.05);
+        filter: brightness(1.06);
         box-shadow:
-          0 16px 30px rgba(0, 0, 0, 0.42),
-          inset 0 1px 0 rgba(255, 255, 255, 0.5);
+          0 16px 30px rgba(112, 26, 38, 0.32),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
       }
       .btn:active {
         transform: translateY(0);
         filter: brightness(0.98);
       }
       .btn:focus-visible {
-        outline: 2px solid var(--gold-hi);
+        outline: 2px solid var(--gold);
         outline-offset: 3px;
       }
 
       /* ------------------------------------------------------------- footer */
       .closing {
-        margin: clamp(16px, 3.4vw, 22px) 0 0;
+        margin: clamp(18px, 3.8vw, 24px) auto 0;
         font-style: italic;
         font-size: clamp(14px, 4vw, 16.5px);
         line-height: 1.62;
-        color: var(--ivory-dim);
+        color: var(--chocolate);
         max-width: 28ch;
-        margin-inline: auto;
       }
 
       .credit {
@@ -478,7 +553,7 @@
         letter-spacing: 0.3em;
         text-indent: 0.3em;
         text-transform: uppercase;
-        color: rgba(207, 165, 92, 0.62);
+        color: rgba(138, 106, 63, 0.75);
       }
 
       .visually-hidden {
@@ -519,10 +594,69 @@
 
   <body>
     <main class="frame">
-      <span class="corner corner--tl" aria-hidden="true"></span>
-      <span class="corner corner--tr" aria-hidden="true"></span>
-      <span class="corner corner--bl" aria-hidden="true"></span>
-      <span class="corner corner--br" aria-hidden="true"></span>
+      <svg class="corner-arc corner-arc--tl" viewBox="0 0 46 46" aria-hidden="true" focusable="false">
+        <path d="M3 43 C3 22 22 3 43 3" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M9 43 C9 25.5 25.5 9 43 9" fill="none" stroke="currentColor" stroke-width="1" />
+        <circle cx="3" cy="43" r="1.7" fill="currentColor" />
+        <circle cx="43" cy="3" r="1.7" fill="currentColor" />
+        <circle cx="9" cy="43" r="1.4" fill="currentColor" />
+        <circle cx="43" cy="9" r="1.4" fill="currentColor" />
+      </svg>
+      <svg class="corner-arc corner-arc--tr" viewBox="0 0 46 46" aria-hidden="true" focusable="false">
+        <path d="M3 43 C3 22 22 3 43 3" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M9 43 C9 25.5 25.5 9 43 9" fill="none" stroke="currentColor" stroke-width="1" />
+        <circle cx="3" cy="43" r="1.7" fill="currentColor" />
+        <circle cx="43" cy="3" r="1.7" fill="currentColor" />
+        <circle cx="9" cy="43" r="1.4" fill="currentColor" />
+        <circle cx="43" cy="9" r="1.4" fill="currentColor" />
+      </svg>
+      <svg class="corner-arc corner-arc--bl" viewBox="0 0 46 46" aria-hidden="true" focusable="false">
+        <path d="M3 43 C3 22 22 3 43 3" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M9 43 C9 25.5 25.5 9 43 9" fill="none" stroke="currentColor" stroke-width="1" />
+        <circle cx="3" cy="43" r="1.7" fill="currentColor" />
+        <circle cx="43" cy="3" r="1.7" fill="currentColor" />
+        <circle cx="9" cy="43" r="1.4" fill="currentColor" />
+        <circle cx="43" cy="9" r="1.4" fill="currentColor" />
+      </svg>
+      <svg class="corner-arc corner-arc--br" viewBox="0 0 46 46" aria-hidden="true" focusable="false">
+        <path d="M3 43 C3 22 22 3 43 3" fill="none" stroke="currentColor" stroke-width="1.4" />
+        <path d="M9 43 C9 25.5 25.5 9 43 9" fill="none" stroke="currentColor" stroke-width="1" />
+        <circle cx="3" cy="43" r="1.7" fill="currentColor" />
+        <circle cx="43" cy="3" r="1.7" fill="currentColor" />
+        <circle cx="9" cy="43" r="1.4" fill="currentColor" />
+        <circle cx="43" cy="9" r="1.4" fill="currentColor" />
+      </svg>
+
+      <!-- ------------------------------------------------ top ornament -->
+      <div class="ornament ornament--top" aria-hidden="true">
+        <span class="ornament__line"></span>
+        <svg class="sprig sprig--flip" viewBox="0 0 64 18" focusable="false">
+          <path d="M3 14 Q32 10 61 4.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(11.7 12.8) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(23.3 11) rotate(-42)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(34.9 9.2) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(46.5 7.2) rotate(-42)" fill="currentColor" />
+        </svg>
+        <svg class="rosette" viewBox="0 0 28 28" focusable="false">
+          <g fill="currentColor">
+            <circle cx="14" cy="5.5" r="3.4" />
+            <circle cx="21.4" cy="9.75" r="3.4" />
+            <circle cx="21.4" cy="18.25" r="3.4" />
+            <circle cx="14" cy="22.5" r="3.4" />
+            <circle cx="6.6" cy="18.25" r="3.4" />
+            <circle cx="6.6" cy="9.75" r="3.4" />
+          </g>
+          <circle cx="14" cy="14" r="2.6" fill="#fdf9ee" />
+        </svg>
+        <svg class="sprig" viewBox="0 0 64 18" focusable="false">
+          <path d="M3 14 Q32 10 61 4.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(11.7 12.8) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(23.3 11) rotate(-42)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(34.9 9.2) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(46.5 7.2) rotate(-42)" fill="currentColor" />
+        </svg>
+        <span class="ornament__line"></span>
+      </div>
 
       <!-- ------------------------------------------------------------ hero -->
       <header class="hero">
@@ -533,7 +667,7 @@
           <span class="amp" aria-hidden="true">
             <span class="amp__rule"></span>&amp;<span class="amp__rule"></span>
           </span>
-          <span class="name">Menna Allah</span>
+          <span class="name name--second">Menna Allah</span>
         </h1>
 
         <p class="invite">
@@ -541,12 +675,6 @@
           at the celebration of our wedding
         </p>
       </header>
-
-      <div class="ornament" aria-hidden="true">
-        <span class="ornament__line"></span>
-        <span class="ornament__gem"></span>
-        <span class="ornament__line"></span>
-      </div>
 
       <!-- -------------------------------------------------------- portrait -->
       <figure class="portrait">
@@ -559,6 +687,20 @@
             decoding="async"
           />
         </div>
+        <svg class="portrait__laurel portrait__laurel--l" viewBox="0 0 64 18" aria-hidden="true" focusable="false">
+          <path d="M3 14 Q32 10 61 4.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(11.7 12.8) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(23.3 11) rotate(-42)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(34.9 9.2) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(46.5 7.2) rotate(-42)" fill="currentColor" />
+        </svg>
+        <svg class="portrait__laurel portrait__laurel--r" viewBox="0 0 64 18" aria-hidden="true" focusable="false">
+          <path d="M3 14 Q32 10 61 4.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(11.7 12.8) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(23.3 11) rotate(-42)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(34.9 9.2) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(46.5 7.2) rotate(-42)" fill="currentColor" />
+        </svg>
         <figcaption class="visually-hidden">
           Ahmed and Menna Allah with their cats
         </figcaption>
@@ -567,9 +709,15 @@
       <!-- ------------------------------------------------------------ date -->
       <section class="date" aria-label="Date and time">
         <p class="date__day">SATURDAY</p>
-        <p class="date__num">27<span class="dot">·</span>03<span class="dot">·</span>2027</p>
+        <p class="date__num">27<span class="dot">·</span>MARCH<span class="dot">·</span>2027</p>
         <p class="date__time">7:00 PM</p>
       </section>
+
+      <div class="divider" aria-hidden="true">
+        <span class="divider__line"></span>
+        <span class="divider__gem"></span>
+        <span class="divider__line"></span>
+      </div>
 
       <!-- -------------------------------------------------------- countdown -->
       <section class="countdown" aria-label="Countdown to the wedding day">
@@ -613,17 +761,57 @@
         <p class="venue__city">Talkha, Dakahlia</p>
       </section>
 
+      <!-- ------------------------------------------------------- dress code -->
+      <section class="dresscode" aria-label="Dress code">
+        <p class="dresscode__key">DRESS CODE</p>
+        <p class="dresscode__value">Formal attire</p>
+        <div class="swatches" aria-hidden="true">
+          <span class="swatch" style="background: #8e2433"></span>
+          <span class="swatch" style="background: #e4cfa2"></span>
+          <span class="swatch" style="background: #5c3a3e"></span>
+          <span class="swatch" style="background: #6d7a4e"></span>
+        </div>
+        <p class="visually-hidden">
+          Dress code: formal attire, in a palette of deep burgundy, warm beige, chocolate brown and army green.
+        </p>
+      </section>
+
       <div class="actions">
         <button class="btn" id="add-calendar" type="button">Add to calendar</button>
       </div>
 
-      <!-- ---------------------------------------------------------- footer -->
+      <!-- ---------------------------------------------------- bottom ornament -->
+      <div class="ornament ornament--bottom" aria-hidden="true">
+        <span class="ornament__line"></span>
+        <svg class="sprig sprig--flip" viewBox="0 0 64 18" focusable="false">
+          <path d="M3 14 Q32 10 61 4.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(11.7 12.8) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(23.3 11) rotate(-42)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(34.9 9.2) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(46.5 7.2) rotate(-42)" fill="currentColor" />
+        </svg>
+        <svg class="rosette" viewBox="0 0 28 28" focusable="false">
+          <g fill="currentColor">
+            <circle cx="14" cy="5.5" r="3.4" />
+            <circle cx="21.4" cy="9.75" r="3.4" />
+            <circle cx="21.4" cy="18.25" r="3.4" />
+            <circle cx="14" cy="22.5" r="3.4" />
+            <circle cx="6.6" cy="18.25" r="3.4" />
+            <circle cx="6.6" cy="9.75" r="3.4" />
+          </g>
+          <circle cx="14" cy="14" r="2.6" fill="#fdf9ee" />
+        </svg>
+        <svg class="sprig" viewBox="0 0 64 18" focusable="false">
+          <path d="M3 14 Q32 10 61 4.5" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(11.7 12.8) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(23.3 11) rotate(-42)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(34.9 9.2) rotate(34)" fill="currentColor" />
+          <path d="M-5.5 0 Q0 -4 5.5 0 Q0 4 -5.5 0Z" transform="translate(46.5 7.2) rotate(-42)" fill="currentColor" />
+        </svg>
+        <span class="ornament__line"></span>
+      </div>
+
       <footer>
-        <div class="ornament ornament--small" aria-hidden="true">
-          <span class="ornament__line"></span>
-          <span class="ornament__gem"></span>
-          <span class="ornament__line"></span>
-        </div>
         <p class="closing">Here begins a lifetime of love, laughter and light</p>
       </footer>
     </main>

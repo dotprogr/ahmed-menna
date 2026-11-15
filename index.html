@@ -461,33 +461,56 @@
         color: var(--chocolate);
       }
 
+      .venue__note {
+        margin: 10px 0 0;
+        font-style: italic;
+        font-size: clamp(13.5px, 3.9vw, 16px);
+        line-height: 1.5;
+        color: var(--chocolate);
+      }
+
+      /* the map link, boxed so guests cannot miss it */
       .venue__map {
         margin-top: 14px;
         display: inline-flex;
         align-items: center;
-        gap: 7px;
+        justify-content: center;
+        gap: 9px;
+        padding: 12px 22px;
+        border: 1px solid var(--gold);
+        border-radius: 14px;
+        background: linear-gradient(180deg, #fcf7ea 0%, #f5ead2 100%);
+        box-shadow:
+          0 8px 18px rgba(92, 58, 62, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.55);
         font-style: italic;
         font-size: clamp(14.5px, 4.3vw, 17px);
-        line-height: 1.5;
+        line-height: 1.35;
         color: var(--burgundy);
         text-decoration: none;
-        border-bottom: 1px solid var(--gold);
-        padding-bottom: 3px;
-        transition: color 0.18s ease, border-color 0.18s ease;
+        transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
         -webkit-tap-highlight-color: transparent;
       }
       .venue__map:hover {
-        color: var(--burgundy-deep);
+        transform: translateY(-1px);
         border-color: var(--burgundy);
+        box-shadow:
+          0 12px 24px rgba(92, 58, 62, 0.14),
+          inset 0 1px 0 rgba(255, 255, 255, 0.55);
+      }
+      .venue__map:active {
+        transform: translateY(0);
+        box-shadow:
+          0 5px 12px rgba(92, 58, 62, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5);
       }
       .venue__map:focus-visible {
         outline: 2px solid var(--gold);
         outline-offset: 3px;
-        border-radius: 3px;
       }
       .venue__arrow {
-        width: 11px;
-        height: 11px;
+        width: 12px;
+        height: 12px;
         flex: 0 0 auto;
         color: var(--gold);
         transition: transform 0.18s ease;
@@ -808,6 +831,9 @@
         <p class="venue__key">THE VENUE</p>
         <p class="venue__name">Diva Talkha Hall</p>
         <p class="venue__city">Talkha, Dakahlia</p>
+        <p class="venue__note">
+          We can&rsquo;t wait to celebrate with you
+        </p>
         <a
           class="venue__map"
           href="https://www.google.com/maps/dir/?api=1&amp;destination=Diva%20Talkha%20Hall%2C%20Talkha%2C%20Dakahlia%2C%20Egypt"
@@ -820,7 +846,7 @@
               fill="currentColor"
             />
           </svg>
-          We can&rsquo;t wait to celebrate with you &mdash; tap to see the road to the hall
+          See the road to the hall
           <svg class="venue__arrow" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
             <path
               d="M7 17L17 7M9 7h8v8"

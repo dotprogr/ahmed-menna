@@ -626,6 +626,32 @@
         color: rgba(138, 106, 63, 0.75);
       }
 
+      /* built-by credit, at the very bottom of the page */
+      .built-by {
+        position: relative;
+        z-index: 1;
+        margin: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Cinzel", serif;
+        font-size: clamp(8px, 2.3vw, 9.5px);
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: rgba(138, 106, 63, 0.7);
+      }
+      .built-by__mark {
+        width: 16px;
+        height: auto;
+        flex: 0 0 auto;
+        color: var(--gold);
+      }
+      .built-by__name {
+        font-weight: 600;
+        letter-spacing: 0.24em;
+        color: var(--burgundy);
+      }
+
       .visually-hidden {
         position: absolute;
         width: 1px;
@@ -918,6 +944,20 @@
     </main>
 
     <p class="credit">With love, Ahmed &amp; Menna Allah</p>
+
+    <p class="built-by">
+      Built by
+      <svg class="built-by__mark" viewBox="0 0 40 20" aria-hidden="true" focusable="false">
+        <path
+          d="M20 10 C16 2 4 2 4 10 C4 18 16 18 20 10 C24 2 36 2 36 10 C36 18 24 18 20 10"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.4"
+          stroke-linecap="round"
+        />
+      </svg>
+      <span class="built-by__name">DOT Programming</span>
+    </p>
 
     <script>
       (() => {

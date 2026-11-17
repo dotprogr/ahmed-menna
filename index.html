@@ -1078,7 +1078,8 @@
         background-image: radial-gradient(120% 80% at 50% -8%, #fbf6ea 0%, transparent 58%);
       }
 
-      html.js-loading .loader {
+      html.js-loading .loader,
+      .loader.is-done:not([hidden]) {
         display: grid;
       }
 
@@ -1088,8 +1089,10 @@
 
       .loader__svg {
         display: block;
-        width: clamp(150px, 46vw, 196px);
+        width: clamp(200px, 66vw, 300px);
         height: auto;
+        transform-origin: 50% 50%;
+        transition: transform 0.6s cubic-bezier(0.3, 0.8, 0.4, 1);
       }
 
       .loader__ring {
@@ -1112,11 +1115,16 @@
 
       .loader.is-done {
         opacity: 0;
-        transform: translateY(-6px);
         pointer-events: none;
+        transition: opacity 0.62s cubic-bezier(0.33, 0, 0.4, 1);
+      }
+
+      .loader.is-done .loader__svg {
+        transform: scale(1.16);
+        opacity: 0;
         transition:
-          opacity 0.34s ease,
-          transform 0.34s ease;
+          transform 0.6s cubic-bezier(0.3, 0.8, 0.4, 1),
+          opacity 0.42s ease-in;
       }
 
       @media (prefers-reduced-motion: reduce) {
@@ -1749,12 +1757,12 @@
         function hide() {
           if (finished) return;
           finished = true;
-          root.classList.remove("js-loading");
           el.classList.add("is-done");
           el.setAttribute("aria-hidden", "true");
+          root.classList.remove("js-loading");
           setTimeout(function () {
             el.hidden = true;
-          }, 400);
+          }, 680);
         }
 
         function reveal() {

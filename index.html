@@ -1074,8 +1074,100 @@
         z-index: 60;
         display: none;
         place-items: center;
+        align-content: center;
+        gap: 16px;
+        padding: 24px;
         background-color: var(--cream);
         background-image: radial-gradient(120% 80% at 50% -8%, #fbf6ea 0%, transparent 58%);
+      }
+
+      /* the overlay only becomes tappable once the film has told its story */
+      .loader.is-ready {
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* "tap to open" — hidden until the film ends */
+      .loader__hint {
+        margin: 0;
+        font-family: Cinzel, serif;
+        font-weight: 600;
+        font-size: clamp(9.5px, 2.9vw, 11.5px);
+        letter-spacing: 0.42em;
+        text-transform: uppercase;
+        color: var(--burgundy);
+        opacity: 0;
+        transform: translateY(6px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+        pointer-events: none;
+        user-select: none;
+      }
+
+      .loader.is-ready .loader__hint {
+        opacity: 0.78;
+        transform: none;
+        animation: hintPulse 2.4s ease-in-out 0.5s infinite;
+      }
+
+      /* three gold ripples breathe out of the frame — "touch me", not an arrow */
+      .loader__ripple circle {
+        opacity: 0;
+        transform-box: view-box;
+        transform-origin: 120px 110px;
+      }
+
+      /* the ripples start the instant the film ends — the same beat as the hint */
+      .loader.is-ready .loader__ripple circle {
+        animation: tapRipple 2.85s cubic-bezier(0.22, 0.61, 0.36, 1) infinite;
+      }
+
+      .loader.is-ready .loader__ripple circle:nth-child(1) {
+        animation-delay: 0.55s;
+      }
+
+      .loader.is-ready .loader__ripple circle:nth-child(2) {
+        animation-delay: 1.5s;
+      }
+
+      .loader.is-ready .loader__ripple circle:nth-child(3) {
+        animation-delay: 2.45s;
+      }
+
+      @keyframes tapRipple {
+        0% {
+          opacity: 0;
+          transform: scale(1);
+        }
+
+        14% {
+          opacity: 0.4;
+        }
+
+        100% {
+          opacity: 0;
+          transform: scale(1.3);
+        }
+      }
+
+      .loader.is-nudge .loader__hint {
+        opacity: 0.95;
+        font-size: clamp(10.5px, 3.2vw, 13px);
+        animation: hintPulse 1.25s ease-in-out infinite;
+      }
+
+      .loader:focus {
+        outline: none;
+      }
+
+      @keyframes hintPulse {
+        0%,
+        100% {
+          opacity: 0.78;
+        }
+
+        50% {
+          opacity: 0.42;
+        }
       }
 
       html.js-loading .loader,
@@ -1313,15 +1405,30 @@
         .loader.is-done .loader__svg {
           transition: none;
         }
+
+        .loader__hint {
+          transition: none;
+          animation: none !important;
+        }
+
+        .loader__ripple circle {
+          animation: none !important;
+          opacity: 0;
+        }
       }
 
     </style>
     <script>
       document.documentElement.classList.add("js-loading");
       window.__loaderStart = Date.now();
-      /* failsafe: never leave the page covered if anything below breaks */
+      window.__loaderActive = false;
+      /* failsafe: if the loader script never runs, do not leave the page covered.
+         Once the loader is in charge it alone decides when the cover lifts (the
+         guest has to tap, so the music is never skipped). */
       setTimeout(function () {
-        document.documentElement.classList.remove("js-loading");
+        if (!window.__loaderActive) {
+          document.documentElement.classList.remove("js-loading");
+        }
       }, 8000);
     </script>
   </head>
@@ -1353,6 +1460,12 @@
           <g transform="rotate(270 120 110)"><g transform="translate(120 -40)"><g class="loader__petal" style="--i:9"><use href="#lpetal" fill="#f2e0d1" stroke="#cb948c" stroke-width="0.55" stroke-opacity="0.85"/></g></g></g>
           <g transform="rotate(300 120 110)"><g transform="translate(120 -40)"><g class="loader__petal" style="--i:10"><use href="#lpetal" fill="#e9afb2" stroke="#c4777c" stroke-width="0.55" stroke-opacity="0.85"/></g></g></g>
           <g transform="rotate(330 120 110)"><g transform="translate(120 -40)"><g class="loader__petal" style="--i:11"><use href="#lpetal" fill="#e0a2a3" stroke="#bb6f74" stroke-width="0.55" stroke-opacity="0.85"/></g></g></g>
+        </g>
+
+        <g class="loader__ripple" aria-hidden="true">
+          <circle cx="120" cy="110" r="62" fill="none" stroke="#b8934a" stroke-width="0.9" stroke-opacity="0.85" />
+          <circle cx="120" cy="110" r="62" fill="none" stroke="#b8934a" stroke-width="0.9" stroke-opacity="0.85" />
+          <circle cx="120" cy="110" r="62" fill="none" stroke="#b8934a" stroke-width="0.9" stroke-opacity="0.85" />
         </g>
 
         <g class="loader__lock">
@@ -1387,8 +1500,10 @@
         </g>
         <text class="loader__caption" x="120" y="224" font-family="Cinzel, serif" font-size="9.2" letter-spacing="3.4" font-weight="600" fill="#5c3a3e" fill-opacity="0.62" text-anchor="middle">AHMED &amp; MENNA</text>
       </svg>
+      <p class="loader__hint" id="loaderHint">Tap to open</p>
       <span class="visually-hidden">Loading the invitation</span>
     </div>
+    <audio id="bgm" src="music.m4a" preload="none" loop playsinline></audio>
     <main class="frame">
       <svg class="corner-arc corner-arc--tl" viewBox="0 0 46 46" aria-hidden="true" focusable="false">
         <path d="M3 43 C3 22 22 3 43 3" fill="none" stroke="currentColor" stroke-width="1.4" />
@@ -1931,19 +2046,124 @@
       })();
     </script>
     <script>
-      /* ------------------------------------------------------------- loader */
+      /* ------------------------------------------------------------- loader + music */
       (function () {
         var el = document.getElementById("loader");
         var root = document.documentElement;
+        var bgm = document.getElementById("bgm");
         if (!el) {
           root.classList.remove("js-loading");
           return;
         }
-        var finished = false;
 
+        window.__loaderActive = true;
+        var reduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        var HOLD_AT = reduced ? 700 : 3600;   /* when "tap to open" appears  */
+        var VOLUME = 0.9;      /* applied through Web Audio, so iOS honours it */
+        var FADE = 3.0;        /* seconds to reach full level */
+        var finished = false;
+        var armed = false;
+        var tapped = false;
+        var fader = null;
+        var wantsMusic = false;
+        var audioCtx = null;
+        var gainNode = null;
+
+        /* ---------- music: real fade-in through Web Audio (iOS ignores el.volume) ---------- */
+        function ensureGraph() {
+          if (audioCtx) return true;
+          var AC = window.AudioContext || window.webkitAudioContext;
+          if (!AC) return false;
+          try {
+            audioCtx = new AC();
+            var src = audioCtx.createMediaElementSource(bgm);
+            gainNode = audioCtx.createGain();
+            gainNode.gain.value = 0.0001;
+            src.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            return true;
+          } catch (e) {
+            audioCtx = null;
+            gainNode = null;
+            return false;
+          }
+        }
+
+        function fadeInGraph() {
+          var t = audioCtx.currentTime;
+          try {
+            gainNode.gain.cancelScheduledValues(t);
+            gainNode.gain.setValueAtTime(0.0001, t);
+            gainNode.gain.exponentialRampToValueAtTime(VOLUME, t + FADE);
+          } catch (e) {
+            gainNode.gain.value = VOLUME;
+          }
+        }
+
+        /* ---------- music: fade in from silence ---------- */
+        function fadeTo(target, step) {
+          if (!bgm) return;
+          if (fader) clearInterval(fader);
+          fader = setInterval(function () {
+            var v = bgm.volume + step;
+            if ((step > 0 && v >= target) || (step < 0 && v <= target)) {
+              bgm.volume = target;
+              clearInterval(fader);
+              fader = null;
+              if (target === 0) bgm.pause();
+            } else {
+              bgm.volume = v;
+            }
+          }, 60);
+        }
+
+        function startMusic() {
+          if (!bgm) return;
+          wantsMusic = true;
+          var graph = false;
+          try {
+            graph = ensureGraph();               /* built inside the gesture */
+            if (graph && audioCtx.state === "suspended") {
+              var r = audioCtx.resume();
+              if (r && r.catch) r.catch(function () {});
+            }
+          } catch (e) {
+            graph = false;
+          }
+          try {
+            bgm.volume = graph ? 1 : 0;          /* graph owns the level, else fall back */
+          } catch (e) {}
+          var p = null;
+          try {
+            p = bgm.play();                      /* must stay inside the tap gesture */
+          } catch (e) {
+            wantsMusic = false;
+            return;
+          }
+          if (p && p.catch) p.catch(function () { wantsMusic = false; });
+          if (graph) fadeInGraph();
+          else fadeTo(VOLUME, VOLUME / (FADE * 16));   /* gentle element-volume ramp */
+        }
+
+        document.addEventListener("visibilitychange", function () {
+          if (!bgm || !wantsMusic) return;
+          if (document.hidden) {
+            bgm.pause();
+          } else {
+            if (audioCtx && audioCtx.state === "suspended") {
+              var r = audioCtx.resume();
+              if (r && r.catch) r.catch(function () {});
+            }
+            var p = bgm.play();
+            if (p && p.catch) p.catch(function () {});
+          }
+        });
+
+        /* ---------- leaving the loading screen ---------- */
         function hide() {
           if (finished) return;
           finished = true;
+          el.classList.remove("is-ready");
           el.classList.add("is-done");
           el.setAttribute("aria-hidden", "true");
           root.classList.remove("js-loading");
@@ -1952,9 +2172,53 @@
           }, 680);
         }
 
+        /* ---------- the tap: music + dissolve, in the same gesture ---------- */
+        function open(withSound) {
+          if (finished) return;
+          if (withSound) startMusic();
+          hide();
+        }
+
+        function arm() {
+          if (finished || armed) return;
+          armed = true;
+          /* only now start pulling the audio, so the tap makes sound at once —
+             guests who never tap never pay for the download */
+          if (bgm) {
+            try {
+              bgm.preload = "auto";
+              bgm.load();
+            } catch (e) {}
+          }
+          el.classList.add("is-ready");
+          el.setAttribute("role", "button");
+          el.setAttribute("tabindex", "0");
+          el.setAttribute("aria-label", "Tap to open the invitation with music");
+          /* if the guest still has not tapped, the hint starts pulsing harder —
+             the screen never opens on its own, so the music is never skipped */
+          setTimeout(function () {
+            if (!finished && !tapped) el.classList.add("is-nudge");
+          }, 4000);
+        }
+
+        el.addEventListener("pointerup", function () {
+          if (!armed || finished) return;
+          tapped = true;
+          open(true);
+        });
+
+        el.addEventListener("keydown", function (e) {
+          if (!armed || finished) return;
+          if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+            e.preventDefault();
+            tapped = true;
+            open(true);
+          }
+        });
+
         function reveal() {
           var elapsed = Date.now() - (window.__loaderStart || Date.now());
-          setTimeout(hide, Math.max(0, 4000 - elapsed));
+          setTimeout(arm, Math.max(0, HOLD_AT - elapsed));
         }
 
         var loaded = new Promise(function (resolve) {
@@ -1964,7 +2228,14 @@
         var fonts = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
 
         Promise.all([loaded, fonts]).then(reveal);
-        setTimeout(hide, 8000);
+
+        /* failsafes: never leave the guest on a dead screen, and never skip the tap */
+        setTimeout(function () {
+          if (!armed && !finished) arm();
+        }, 9000);
+        window.addEventListener("pageshow", function (e) {
+          if (e.persisted && !armed && !finished) arm();
+        });
       })();
     </script>
   </body>
